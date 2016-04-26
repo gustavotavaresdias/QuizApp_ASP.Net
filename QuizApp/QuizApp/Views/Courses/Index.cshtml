@@ -1,0 +1,46 @@
+﻿@model IEnumerable<QuizApp.Models.Course>
+
+@{
+    ViewBag.Title = "List of Courses";
+}
+
+<div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12">
+        <div class="jumbotron text-center">
+            <h1>Course Page</h1>
+        </div>
+    </div>
+    <div class="col-xs-12">
+        @Html.Partial("_Menu")
+        <div class="col-sm-10">
+            <table class="table">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th></th>
+                </tr>
+
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ID }, new { @class = "btnEdit" }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.ID }, new { @class = "btnView" }) |
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ID }, new { @class = "btnDel" })
+                        </td>
+                    </tr>
+                }
+
+            </table>
+            <p>
+                @Html.ActionLink(" Add Course ", "Create", null, new { @class = "btn btn-primary btn-sm;glyphicon glyphicon-plus" })
+            </p>
+
+        </div><!--/row-->
+    </div><!--/.col-xs-12.col-sm-9-->
+
+</div>

@@ -1,0 +1,22 @@
+﻿@using QuizApp.Models
+@using QuizApp.DAL;
+@{QuizContext db = new QuizContext();}
+
+<div class="col-sm-2">
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active text-center"><a href="#">Menu</a></li>
+        <li>@Html.ActionLink("Students", "Index", "Students")</li>
+        <li>@Html.ActionLink("Questions", "Index", "Questions")</li>
+        <li>@Html.ActionLink("Questionnaires", "Index", "Questionnaires")</li>
+        <li>@Html.ActionLink("Units", "Index", "Units")</li>
+        @if (((Lecturer)Session["User"]).IsAdm)
+        {
+            <li>@Html.ActionLink("Courses", "Index", "Courses")</li>
+            <li>@Html.ActionLink("Lecturers", "Index", "Lecturers")</li>
+        }
+    </ul>
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

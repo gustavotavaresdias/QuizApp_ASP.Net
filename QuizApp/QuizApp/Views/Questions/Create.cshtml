@@ -1,0 +1,86 @@
+﻿@model QuizApp.Models.Question
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Question</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Title, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.CorrectAnswer, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.CorrectAnswer, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.CorrectAnswer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypeQuestionID, "TypeQuestionID", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("TypeQuestionID", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.TypeQuestionID, "", new { @class = "text-danger" })
+            </div>
+        </div> 
+        <div class="form-group">
+             @Html.LabelFor(model => model.OptionsAnswer, "Option Answer1:", htmlAttributes: new { @class = "control-label col-md-2" })
+             <div class="col-md-10">
+                 <input class="form-control text-box single-line" id="OptionAnswer1" name="OptionAnswer1" type="text" value="">
+                 @Html.ValidationMessageFor(model => model.OptionsAnswer, "", new { @class = "text-danger" })
+             </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionsAnswer, "Option Answer2:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="OptionAnswer2" name="OptionAnswer2" type="text" value="">
+                @Html.ValidationMessageFor(model => model.OptionsAnswer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionsAnswer, "Option Answer3:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="OptionAnswer3" name="OptionAnswer3" type="text" value="">
+                @Html.ValidationMessageFor(model => model.OptionsAnswer, "", new { @class = "text-danger" })
+             </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.OptionsAnswer, "Option Answer4:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                <input class="form-control text-box single-line" id="OptionAnswer4" name="OptionAnswer4" type="text" value="">
+                @Html.ValidationMessageFor(model => model.OptionsAnswer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+   </div>
+    
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-info btn-sm" />
+            </div>
+        </div>
+    
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-info btn-sm;glyphicon" })
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
